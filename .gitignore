@@ -1,6 +1,7 @@
 .idea
 *.iml
 personal-9894.md
+*.swp
 
 # Targets Windows & Unix temporary files
 ~$*
