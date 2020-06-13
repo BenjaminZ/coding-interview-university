@@ -14,7 +14,7 @@ pub fn get_mode(numbers: &Vec<f64>) -> (f64, i32) {
     if let Ok(num) = count_vec[0].0.parse() {
         (num, *count_vec[0].1)
     } else {
-        (0f64, -1i32)
+        panic!("Cannot parse {} back to f64.", count_vec[0].0);
     }
 }
 
@@ -39,6 +39,10 @@ pub fn get_numbers() -> Vec<f64> {
     let mut numbers: Vec<f64> = Vec::new();
     loop {
         let input = get_input();
+        if input.trim().is_empty() {
+            println!("Please enter something.");
+            continue;
+        }
         let mut result = true;
         for cell in input.split_whitespace() {
             let value: f64 = match cell.trim().parse() {
@@ -65,7 +69,7 @@ pub fn get_numbers() -> Vec<f64> {
 pub fn get_input() -> String {
     let mut input = String::new();
 
-    println!("Please input some numbers, splited by spaces.");
+    println!("Please enter some numbers, splited by spaces.");
 
     io::stdin()
         .read_line(&mut input)
