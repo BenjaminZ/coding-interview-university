@@ -11,11 +11,10 @@ pub fn get_mode(numbers: &Vec<f64>) -> (f64, i32) {
 
     let mut count_vec: Vec<(&String, &i32)> = map.iter().collect();
     count_vec.sort_by(|a, b| b.1.cmp(a.1));
-    if let Ok(num) = count_vec[0].0.parse() {
-        (num, *count_vec[0].1)
-    } else {
-        panic!("Cannot parse {} back to f64.", count_vec[0].0);
-    }
+
+    let num = count_vec[0].0.parse().unwrap();
+
+    (num, *count_vec[0].1)
 }
 
 pub fn get_median(numbers: &mut Vec<f64>) -> f64 {
