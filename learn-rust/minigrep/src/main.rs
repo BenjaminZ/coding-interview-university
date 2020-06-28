@@ -10,12 +10,9 @@ fn main() {
         println!("Problem parsing arguments: {}", err);
         process::exit(1);
     });
-    println!("Query is {}", config.query);
-    println!("Filename is {}\n", config.filename);
 
     if let Err(e) = run(config) {
-        println!("Application error: {}", e);
+        eprintln!("Application error: {}", e);
         process::exit(1);
     }
 }
-
